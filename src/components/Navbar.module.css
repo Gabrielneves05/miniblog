@@ -3,7 +3,7 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 2em;
+    padding: .3em 2em;
 }
 
 .brand {
@@ -24,7 +24,8 @@
     margin-right: 1em;
 }
 
-.links_list li a {
+.links_list li a, button {
+    display: flex;
     padding: .4em .6em;
 }
 

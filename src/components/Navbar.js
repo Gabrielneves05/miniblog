@@ -9,6 +9,8 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
     const { user } = useAuthValue();
 
+    const { logout } = useAuthentication();
+
     return (
         <nav className={styles.navbar}>
             <NavLink to="/" className={styles.brand}>
@@ -72,6 +74,11 @@ export default function Navbar() {
                         Sobre
                     </NavLink>
                 </li>
+                {user && (
+                    <li>
+                        <button className="logout-btn" onClick={logout}>Sair</button>
+                    </li>
+                )}
             </ul>
         </nav>
     );

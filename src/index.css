@@ -102,6 +102,21 @@ button[disabled] {
     background-color: #aaa;
 }
 
+.logout-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dc3545;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
 .container .error {
     color: #721c24;
     background-color: #f8d7da;
