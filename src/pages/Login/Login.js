@@ -9,7 +9,7 @@ export default function Login() {
 
     const [error, setError] = useState('');
 
-    const { createUser, error: authError, loading } = useAuthentication();
+    const { login, error: authError, loading } = useAuthentication();
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -21,7 +21,7 @@ export default function Login() {
             password
         }
 
-        const response = await createUser(user);
+        const response = await login(user);
 
         console.log(response);
     }

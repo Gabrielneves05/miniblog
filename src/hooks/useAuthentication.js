@@ -1,22 +1,18 @@
-import { db } from "../firebase/config";
-
+import { db, auth } from "../firebase/config";
 import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    updateProfile,
-    signOut
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  signOut
 } from "firebase/auth";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 export function useAuthentication() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
 
     const [cancelled, setCancelled] = useState(false);
-
-    const auth = getAuth();
 
     function checkIfIsCancelled() {
         if(cancelled) {
@@ -54,11 +50,11 @@ export function useAuthentication() {
             let systemErrorMessage;
 
             if(error.message.includes('Password')) {
-                systemErrorMessage = 'Sua senha deve conter no mínimo 6 caracteres';
+                systemErrorMessage = 'Sua senha deve conter no mínimo 6 caracteres!';
             } else if(error.message.includes('email-already')) {
-                systemErrorMessage = 'Este e-mail já está cadastrado';
+                systemErrorMessage = 'Este e-mail já está cadastrado!';
             } else {
-                systemErrorMessage = 'Ocorreu um erro ao cadastrar, tente novamente mais tarde';
+                systemErrorMessage = 'Ocorreu um erro ao cadastrar, tente novamente mais tarde!';
             }
 
             setLoading(false);
@@ -73,6 +69,32 @@ export function useAuthentication() {
         signOut(auth);
     }
 
+    // Sign in
+    const login = async data => {
+        checkIfIsCancelled();
+
+        setLoading(true);
+
+        setError(null);
+
+        try {
+            await signInWithEmailAndPassword(auth, data.email, data.password);
+            setLoading(false);
+        } catch (error) {
+
+            let systemErrorMessage;
+
+            if(error.message.includes('auth/invalid-credential')) {
+                systemErrorMessage = 'Credenciais inválidas!';
+            } else {
+                systemErrorMessage = 'Ocorreu um erro ao fazer login, tente novamente mais tarde!';
+            }
+
+            setError(systemErrorMessage);
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
         return () => setCancelled(true);
     }, []);
@@ -82,6 +104,7 @@ export function useAuthentication() {
         createUser,
         error,
         loading,
-        logout
+        logout,
+        login,
     }
 }
