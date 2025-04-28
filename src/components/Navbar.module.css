@@ -31,7 +31,6 @@
 
 .logoutBtn {
     background-color: #dc3545;
-    border-radius: 5px;
     color: #fff;
     font-size: 1em;
 }
@@ -43,5 +42,4 @@
 .active {
     background-color: #000;
     color: #fff;
-    border-radius: 5px;
 }
