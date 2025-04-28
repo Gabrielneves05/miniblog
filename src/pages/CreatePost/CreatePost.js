@@ -15,27 +15,41 @@ export default function CreatePost() {
     const {user} = useAuthValue();
 
     const {insertDocument, response} = useInsertDocument('posts');
+
+    const navigate = useNavigate();
     
     const handleSubmit = event => {
         event.preventDefault();
         setFormError('');
 
         // Validate image URL
+        try {
+            new URL(image);
+        } catch (error) {
+            setFormError('URL da imagem inválida!');
+        }
 
         // Array tags created
+        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase());
 
         // All values checked
+        if(!title || !image || !tags || !body) {
+            setFormError('Preencha todos os campos!');
+        }
+
+        if(formError) return;
 
         insertDocument({
             title,
             image,
             body,
-            tags,
+            tagsArray,
             uid: user.uid,
             createdBy: user.displayName
         })
 
         // Home page redirect
+        navigate('/');
     }
 
     return (
@@ -92,6 +106,7 @@ export default function CreatePost() {
                 {!response.loading && <button className="btn">Publicar</button>}
                 {response.loading && <button className="btn" disabled>Aguarde...</button>}
                 {response.error && <p className="error">{response.error}</p>}
+                {formError && <p className="error">{formError}</p>}
             </form>
         </div>
     );
