@@ -9,15 +9,25 @@ export default function Home() {
     const [query, setQuery] = useState('');
     const {documents: posts, loading} = useFetchDocuments('posts');
 
+    const navigate = useNavigate();
+
     const handleSubmit = event => {
         event.preventDefault();
+
+        if(query) {
+            return navigate(`/search?q=${query}`);
+        }
     }
 
     return (
         <div className={styles.home}>
             <h1>Veja as publicações mais recentes</h1>
             <form onSubmit={handleSubmit} className={styles.search_form}>
-                <input type="text" placeholder="Buscar por tags..." onChange={event => setQuery(event.target.value)} />
+                <input 
+                    type="text" 
+                    placeholder="Buscar por tags..." 
+                    onChange={event => setQuery(event.target.value)} 
+                />
                 <button className="btn btn-dark">Pesquisar</button>
             </form>
 
