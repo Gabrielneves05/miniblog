@@ -6,6 +6,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useState, useEffect, use } from 'react';
 import { useAuthentication } from './hooks/useAuthentication';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 import { AuthProvider } from './context/AuthContext';
 
 import Home from "./pages/Home/Home";
