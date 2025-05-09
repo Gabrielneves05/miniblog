@@ -9,6 +9,8 @@ import { useAuthentication } from './hooks/useAuthentication';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Loading from './components/Loading/Loading';
+
 import { AuthProvider } from './context/AuthContext';
 
 import Home from "./pages/Home/Home";
@@ -36,8 +38,9 @@ function App() {
   }, [auth]);
 
   if (loadingUser) {
-    return <p>Carregando...</p>;
+    return <Loading />;
   }
+
 
   return (
     <div className="App">

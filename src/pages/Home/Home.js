@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import PostDetail from "../../components/PostDetail";
+import Loading from "../../components/Loading/Loading";
 
 export default function Home() {
     const [query, setQuery] = useState('');
@@ -32,7 +33,7 @@ export default function Home() {
             </form>
 
             <div>
-                {loading && <p>Carregando...</p>}
+                {loading && <Loading />}
                 {posts && posts.map(post => <PostDetail post={post} key={post.id} />)}
                 {posts && posts.length === 0 && (
                     <div className={styles.noposts}>
