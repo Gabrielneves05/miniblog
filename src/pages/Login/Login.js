@@ -2,19 +2,16 @@ import styles from './Login.module.css';
 
 import { useState, useEffect } from 'react';
 import { useAuthentication } from '../../hooks/useAuthentication';
+import { toast } from 'react-toastify';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [error, setError] = useState('');
-
     const { login, error: authError, loading } = useAuthentication();
 
     const handleSubmit = async event => {
         event.preventDefault();
-
-        setError('');
 
         const user = {
             email,
@@ -23,14 +20,12 @@ export default function Login() {
 
         const response = await login(user);
 
-        console.log(response);
-    }
-
-    useEffect(() => {
-        if(authError) {
-            setError(authError);
+        if(response?.error) {
+            toast.error(response?.error);
+        } else {
+            toast.success('Acesso realizado com sucesso');
         }
-    }, [authError]);
+    }
 
     return (
         <div className={styles.login}>
@@ -62,8 +57,6 @@ export default function Login() {
 
                 {!loading && <button className="btn">Entrar</button>}
                 {loading && <button className="btn" disabled>Aguarde...</button>}
-
-                {error && <p className="error">{error}</p>}
             </form>
         </div>
     );

@@ -1,10 +1,13 @@
 import './App.css';
 
-import { BrowserRouter, Routes, Route, Navigate, Router } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from 'firebase/auth';
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuthentication } from './hooks/useAuthentication';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -29,13 +32,11 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       setUser(user);
-    })
+    });
   }, [auth]);
 
-  if(loadingUser) {
-    return (
-      <p>Carregando...</p>
-    );
+  if (loadingUser) {
+    return <p>Carregando...</p>;
   }
 
   return (
@@ -49,29 +50,40 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/search" element={<Search />} />
               <Route path="/posts/:id" element={<Post />} />
-              <Route 
-                path="/login" 
-                element={!user ? <Login /> : <Navigate to="/" />} 
+              <Route
+                path="/login"
+                element={!user ? <Login /> : <Navigate to="/" />}
               />
-              <Route 
-                path="/register" 
-                element={!user ? <Register /> : <Navigate to="/" />} 
+              <Route
+                path="/register"
+                element={!user ? <Register /> : <Navigate to="/" />}
               />
-              <Route 
-                path="/posts/edit/:id" 
-                element={user ? <EditPost /> : <Navigate to="/login" />} 
+              <Route
+                path="/posts/edit/:id"
+                element={user ? <EditPost /> : <Navigate to="/login" />}
               />
-              <Route 
-                path="/posts/create" 
-                element={user ? <CreatePost /> : <Navigate to="/login" />} 
+              <Route
+                path="/posts/create"
+                element={user ? <CreatePost /> : <Navigate to="/login" />}
               />
-              <Route 
-                path="/dashboard" 
-                element={user ? <Dashboard /> : <Navigate to="/login" />} 
+              <Route
+                path="/dashboard"
+                element={user ? <Dashboard /> : <Navigate to="/login" />}
               />
             </Routes>
           </div>
           <Footer />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </BrowserRouter>
       </AuthProvider>
     </div>

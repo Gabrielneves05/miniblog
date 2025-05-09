@@ -41,7 +41,7 @@ export function useAuthentication() {
 
             setLoading(false);
 
-            return user;
+            return { user };
 
         } catch (error) {
             console.log(error.message);
@@ -59,6 +59,8 @@ export function useAuthentication() {
 
             setLoading(false);
             setError(systemErrorMessage);
+
+            return { error: systemErrorMessage };
         }
     }
 
@@ -74,26 +76,28 @@ export function useAuthentication() {
         checkIfIsCancelled();
 
         setLoading(true);
-
         setError(null);
 
         try {
             await signInWithEmailAndPassword(auth, data.email, data.password);
             setLoading(false);
+            return { success: true };
         } catch (error) {
-
             let systemErrorMessage;
 
-            if(error.message.includes('auth/invalid-credential')) {
-                systemErrorMessage = 'Credenciais inválidas!';
+            if (error.message.includes('auth/invalid-credential')) {
+                systemErrorMessage = 'Credenciais inválidas';
             } else {
-                systemErrorMessage = 'Ocorreu um erro ao fazer login, tente novamente mais tarde!';
+                systemErrorMessage = 'Ocorreu um erro ao fazer login, tente novamente mais tarde';
             }
 
             setError(systemErrorMessage);
             setLoading(false);
+
+            return { error: systemErrorMessage };
         }
-    }
+    };
+
 
     useEffect(() => {
         return () => setCancelled(true);

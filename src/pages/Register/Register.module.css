@@ -5,3 +5,38 @@
 .register p {
     color: #aaa;
 }
+
+.passwordStrengthContainer {
+  margin-top: 10px;
+}
+
+.passwordStrengthBar {
+  height: 5px;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.passwordStrengthContainer p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.passwordContainer {
+  position: relative;
+}
+
+.passwordContainer input {
+  width: 100%;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #aaa;
+}
