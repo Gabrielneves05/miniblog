@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
 import { useInsertDocument } from '../../hooks/useInsertDocument';
+import { toast } from 'react-toastify';
 
 export default function CreatePost() {
     const [title, setTitle] = useState('');
@@ -47,6 +48,9 @@ export default function CreatePost() {
             uid: user.uid,
             createdBy: user.displayName
         })
+
+        // Toast de sucesso
+        toast.success('Publicação criada com sucesso');
 
         // Home page redirect
         navigate('/');

@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
 import { useFetchDocument } from '../../hooks/useFetchDocument';
 import { useUpdateDocument } from '../../hooks/useUpdateDocument';
+import { toast } from 'react-toastify';
 
 export default function EditPost() {
     const { id } = useParams();
@@ -65,6 +66,8 @@ export default function EditPost() {
         }
 
         updateDocument(id, data);
+
+        toast.success('Publicação editada com sucesso');
 
         // Home page redirect
         navigate('/dashboard');

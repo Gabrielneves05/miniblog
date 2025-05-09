@@ -1,6 +1,7 @@
 import { useState, useEffect, useReducer } from 'react';
 import { db } from '../firebase/config';
 import { doc, deleteDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 const initialState = {
     loading: null,
@@ -43,11 +44,15 @@ export const useDeleteDocument = docCollection => {
                 type: "DELETED_DOC",
                 payload: deletedDocument
             });
+
+            toast.success('Publicação excluída com sucesso');
         } catch (error) {
             checkCancelBeforeDispatch({
                 type: "ERROR",
                 payload: error.message
             });
+
+            toast.error('Ocorreu um erro ao excluir a publicação');
         }
     }
 

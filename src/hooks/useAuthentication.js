@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 
 import { useState, useEffect } from "react";
+import { toast } from 'react-toastify';
 
 export function useAuthentication() {
     const [error, setError] = useState(null);
@@ -69,6 +70,8 @@ export function useAuthentication() {
         checkIfIsCancelled();
 
         signOut(auth);
+
+        toast.success('Sessão encerrada');
     }
 
     // Sign in

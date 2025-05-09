@@ -8,7 +8,7 @@ export default function About() {
             <h2>Sobre nosso Mini <span>Blog</span></h2>
             <p>Projeto que consiste em um blog simples em formato de rede social desenvolvido utilizando React e Firebase.</p>
 
-            <Link href="/posts/create" className="btn">Criar Post</Link>
+            <Link href="/posts/create" className="btn">Criar Publicação</Link>
         </div>
     );
 }
