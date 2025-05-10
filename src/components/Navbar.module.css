@@ -1,45 +1,150 @@
 .navbar {
-    display: flex;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
-    justify-content: space-between;
-    align-items: center;
-    padding: .3em 2em;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px -2px 10px 0px;
+  justify-content: space-between;
+  align-items: center;
+  padding: .3em 2em;
+  position: relative;
+  min-height: 60px; /* Garantindo altura mínima da navbar */
 }
 
 .brand {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .brand span {
-    font-weight: 900;
-    text-transform: uppercase;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .links_list {
-    display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0; /* Removendo padding padrão da lista */
+  height: 100%; /* Garantindo que a lista use toda a altura disponível */
+  align-items: center; /* Centralizando verticalmente os itens */
 }
 
 .links_list li {
-    margin-right: 1em;
+  margin-right: 1em;
 }
 
 .links_list li a, .logoutBtn {
-    display: flex;
-    padding: .4em .6em;
+  display: flex;
+  padding: .4em .6em;
+  align-items: center; /* Centralizando conteúdo verticalmente */
+  height: 100%; /* Usando toda a altura disponível do item */
 }
 
 .logoutBtn {
-    background-color: #dc3545;
-    color: #fff;
-    font-size: 1em;
+  background-color: #dc3545;
+  color: #fff;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
 }
 
 .logoutBtn:hover {
-    background-color: #c82333;
+  background-color: #c82333;
 }
 
 .active {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Menu hamburguer */
+.menuButton {
+  display: none;
+  cursor: pointer;
+}
+
+.menuIcon {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menuIcon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+}
+
+.menuIcon span:nth-child(1) {
+  top: 0px;
+}
+
+.menuIcon span:nth-child(2) {
+  top: 10px;
+}
+
+.menuIcon span:nth-child(3) {
+  top: 20px;
+}
+
+.menuIcon.open span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+.menuIcon.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.menuIcon.open span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}
+
+/* Media queries para responsividade */
+@media screen and (max-width: 768px) {
+  .navbar {
+    min-height: 60px; /* Mantendo a altura consistente em dispositivos móveis */
+  }
+  
+  .menuButton {
+    display: block;
+    z-index: 99;
+  }
+  
+  .links_list {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    flex-direction: column;
+    padding: 80px 20px 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 98;
+    align-items: flex-start; /* Alinhando itens à esquerda no menu mobile */
+  }
+  
+  .links_list.active {
+    right: 0;
+  }
+  
+  .links_list li {
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  .links_list li a, .logoutBtn {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }

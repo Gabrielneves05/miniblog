@@ -1,23 +1,29 @@
 .post_datail {
     margin-bottom: 2em;
+    max-width: 100%;
 }
 
 .post_datail img {
     max-width: 600px;
+    width: 100%;
+    height: auto;
 }
 
 .post_datail h2 {
     margin-bottom: .4em;
+    word-wrap: break-word;
 }
 
 .post_datail .tags {
     display: flex;
-    margin-bottom: 1.2em
+    margin-bottom: 1.2em;
+    flex-wrap: wrap;
 }
 
 .tags p {
     margin-right: .5em;
     font-weight: bold;
+    margin-bottom: 0.5em;
 }
 
 .createdBy {
@@ -25,4 +31,20 @@
     color: #444;
     font-size: .8em;
     margin-bottom: 1em;
+}
+
+@media screen and (max-width: 768px) {
+    .post_datail h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .post_datail h2 {
+        font-size: 1.3em;
+    }
+    
+    .post_datail .tags {
+        justify-content: start;
+    }
 }
