@@ -22,3 +22,36 @@
 .tags {
     font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+    .postContainer {
+        padding: 1rem;
+    }
+
+    .postContainer h1 {
+        font-size: 1.8em;
+        margin-bottom: 1rem;
+    }
+
+    .postContainer img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .tags p {
+        font-size: 1rem;
+    }
+
+    .postContainer .tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: .5rem;
+    }
+
+    .tags p {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}

@@ -1,5 +1,6 @@
 .editPost {
     text-align: center;
+    padding: 2rem 1rem;
 }
 
 .editPost h2 {
@@ -20,4 +21,46 @@
 .imagePreview {
     max-width: 500px;
     margin-bottom: 1em;
+}
+
+@media screen and (max-width: 768px) {
+    .editPost {
+        padding: 1.5rem 1rem;
+    }
+
+    .editPost form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .editPost form label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .editPost input,
+    .editPost textarea {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .editPost .imagePreview {
+        width: 100%;
+        max-width: 300px;
+        margin: 1em 0;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 400px;
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
 }

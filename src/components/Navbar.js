@@ -2,7 +2,7 @@ import styles from './Navbar.module.css';
 import { useAuthentication } from '../hooks/useAuthentication';
 import { useAuthValue } from '../context/AuthContext';
 import { NavLink } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const { user } = useAuthValue();
@@ -12,6 +12,18 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
 
   return (
     <nav className={styles.navbar}>

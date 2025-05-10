@@ -6,3 +6,20 @@
     justify-content: center;
     background-color: #edf3f6;
 }
+
+@media screen and (max-width: 768px) {
+    .footer {
+        height: 250px;
+        padding: 1rem;
+    }
+
+    .footer h3 {
+        font-size: 1em;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .footer p {
+        font-size: .9rem;
+    }
+}

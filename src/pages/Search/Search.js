@@ -15,7 +15,8 @@ export default function Search() {
 
     return (
         <div className={styles.searchContainer}>
-            <h1>Search</h1>
+            <h1>Resultados da busca</h1>
+            <p>Encontramos {posts?.length} publicações relacionadas a "{search}"</p>
             <div>
                 {posts && posts.length === 0 && (
                     <div className={styles.noposts}>

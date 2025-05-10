@@ -5,7 +5,7 @@
   align-items: center;
   padding: .3em 2em;
   position: relative;
-  min-height: 60px; /* Garantindo altura mínima da navbar */
+  min-height: 60px;
 }
 
 .brand {
@@ -21,9 +21,9 @@
   display: flex;
   list-style: none;
   margin: 0;
-  padding: 0; /* Removendo padding padrão da lista */
-  height: 100%; /* Garantindo que a lista use toda a altura disponível */
-  align-items: center; /* Centralizando verticalmente os itens */
+  padding: 0;
+  height: 100%;
+  align-items: center;
 }
 
 .links_list li {
@@ -32,12 +32,14 @@
 
 .links_list li a, .logoutBtn {
   display: flex;
-  padding: .4em .6em;
-  align-items: center; /* Centralizando conteúdo verticalmente */
-  height: 100%; /* Usando toda a altura disponível do item */
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0.8em 1.2em;
+  box-sizing: border-box;
 }
 
 .logoutBtn {
+  display: flex;
   background-color: #dc3545;
   color: #fff;
   font-size: 1em;
@@ -54,7 +56,6 @@
   color: #fff;
 }
 
-/* Menu hamburguer */
 .menuButton {
   display: none;
   cursor: pointer;
@@ -107,10 +108,9 @@
   transform: rotate(-135deg);
 }
 
-/* Media queries para responsividade */
 @media screen and (max-width: 768px) {
   .navbar {
-    min-height: 60px; /* Mantendo a altura consistente em dispositivos móveis */
+    min-height: 60px;
   }
   
   .menuButton {
@@ -131,7 +131,7 @@
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     z-index: 98;
-    align-items: flex-start; /* Alinhando itens à esquerda no menu mobile */
+    align-items: flex-start;
   }
   
   .links_list.active {
