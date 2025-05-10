@@ -3,10 +3,12 @@ import styles from './Login.module.css';
 import { useState, useEffect } from 'react';
 import { useAuthentication } from '../../hooks/useAuthentication';
 import { toast } from 'react-toastify';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const { login, error: authError, loading } = useAuthentication();
 
@@ -45,14 +47,22 @@ export default function Login() {
                 </label>
                 <label>
                     <span>Senha:</span>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        placeholder="Senha" 
-                        required 
-                        value={password}
-                        onChange={event => setPassword(event.target.value)}
-                    />
+                    <div className={styles.passwordContainer}>
+                        <input 
+                            type={showPassword ? 'text' : 'password'} 
+                            name="password" 
+                            placeholder="Senha" 
+                            required 
+                            value={password}
+                            onChange={event => setPassword(event.target.value)}
+                        />
+                        <span
+                            className={styles.eyeIcon}
+                            onClick={() => setShowPassword(prev => !prev)}
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                    </div>
                 </label>
 
                 {!loading && <button className="btn">Entrar</button>}
