@@ -10,11 +10,12 @@
 
 .createPost h1 {
     font-size: 2em;
+    margin-bottom: 1.2em;
 }
 
 @media screen and (max-width: 768px) {
     .createPost {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
     }
 
     .createPost form {
