@@ -58,7 +58,7 @@ export default function CreatePost() {
 
     return (
         <div className={styles.createPost}>
-            <h2>Criar publicação</h2>
+            <h1>Criar publicação</h1>
             <p>Escreva e publique para compartilhar.</p>
             <form onSubmit={handleSubmit}>
                 <label>

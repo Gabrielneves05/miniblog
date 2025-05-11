@@ -77,7 +77,7 @@ export default function EditPost() {
         <div className={styles.editPost}>
             {post && (
                 <>
-                    <h2>Editar publicação</h2>
+                    <h1>Editar publicação</h1>
                     <p>Altere as informações da publicação</p>
                     <form onSubmit={handleSubmit}>
                         <label>

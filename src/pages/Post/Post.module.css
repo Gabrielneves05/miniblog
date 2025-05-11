@@ -1,5 +1,6 @@
 .postContainer {
     text-align: center;
+    padding: 2rem 1rem;
 }
 
 .postContainer h3 {
@@ -25,11 +26,11 @@
 
 @media screen and (max-width: 768px) {
     .postContainer {
-        padding: 1rem;
+        padding: 2rem 1rem;
     }
 
     .postContainer h1 {
-        font-size: 1.8em;
+        font-size: 2em;
         margin-bottom: 1rem;
     }
 

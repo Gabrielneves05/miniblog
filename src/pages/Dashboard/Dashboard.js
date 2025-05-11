@@ -23,7 +23,7 @@ export default function Dashboard() {
 
     return (
         <div className={styles.dashboard}>
-            <h2>Dashboard</h2>
+            <h1>Dashboard</h1>
             <p>Gerencie suas publicações</p>
             {posts && posts.length === 0 ? (
                 <div className={styles.noposts}>
